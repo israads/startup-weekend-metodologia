@@ -1,10 +1,21 @@
 # Startup Weekend Mentor
 
+![Startup Weekend Mentor](assets/startup-weekend-mentor-banner.svg)
+
 Mentor digital interactivo para equipos que compiten en Startup Weekend. Esta metodologia convierte las 54 horas del evento en un sistema de decisiones, validacion, construccion y pitch.
 
 No es una guia pasiva. Es un copiloto de trabajo: pregunta, desafia, facilita debates, corta discusiones largas, genera outputs concretos y obliga al equipo a validar con evidencia real antes de enamorarse de la solucion.
 
 Funciona en Claude Code, ChatGPT, Claude.ai, Gemini, Cursor, Windsurf y cualquier LLM que acepte instrucciones de sistema.
+
+Si tu equipo no es tecnico, tambien sirve. Puedes usarlo copiando el prompt en ChatGPT o Claude y escribiendo frases normales como:
+
+```text
+Estamos en sabado, tenemos una idea pero no sabemos si la gente pagaria.
+Ayudanos a validar rapido.
+```
+
+El mentor responde con preguntas simples, pasos concretos y plantillas listas para usar.
 
 ---
 
@@ -12,11 +23,13 @@ Funciona en Claude Code, ChatGPT, Claude.ai, Gemini, Cursor, Windsurf y cualquie
 
 Startup Weekend es un evento global impulsado por Techstars donde personas de perfiles distintos forman equipos y construyen una startup desde cero en un fin de semana.
 
-El formato clasico dura 54 horas:
+El formato clasico dura 54 horas, aunque cada ciudad, universidad, comunidad u organizador puede mover horarios, mentorias o presentaciones:
 
 - **Viernes:** pitch de ideas, votacion, formacion de equipos y primer acuerdo de trabajo.
 - **Sabado:** validacion con clientes reales, mentorias, decisiones de pivot y MVP.
 - **Domingo:** demo, modelo de negocio, pitch final y preguntas de jueces.
+
+El orden puede variar. Algunos eventos validan desde el viernes, otros hacen mentorias mas temprano, otros piden deck antes del domingo o cambian la hora de presentacion. Este framework no depende de un horario rigido: detecta en que momento esta el equipo y recomienda el siguiente paso mas importante.
 
 La promesa del evento es simple: vivir el ciclo completo de una startup en tiempo comprimido. En lugar de hablar durante semanas sobre una idea, el equipo tiene que salir, aprender, construir, presentar y defender decisiones con evidencia.
 
@@ -154,32 +167,125 @@ Con menos de 15 puntos, el mentor no recomienda construir una app completa.
 
 ## Las 3 Etapas del Evento
 
+> Nota: este es el flujo mas comun. Puede variar segun la agenda local, la vertical del evento, el numero de equipos, la disponibilidad de mentores y los criterios de jueces.
+
 ### Etapa 1 — Viernes: Ideacion y Formacion
 
-- Evaluacion de ideas con criterios objetivos
-- Pitch de 60 segundos
-- Formacion de equipo
-- Hipotesis del problema
-- Lista de usuarios a entrevistar
-- Primer Test Card para el sabado
+El viernes no se gana construyendo. Se gana saliendo con claridad.
+
+Lo importante del viernes:
+
+- Entender el formato y las reglas del evento
+- Presentar ideas en pitch de 60 segundos
+- Votar o elegir ideas con potencial
+- Formar equipos balanceados: negocio, diseno, tecnologia, ventas, operaciones
+- Acordar quien toma decisiones cuando haya desacuerdo
+- Escribir la hipotesis del problema en una frase
+- Definir a que usuarios se entrevistara primero
+- Preparar el primer Test Card para validar el sabado
+
+Al final del viernes, el equipo deberia poder decir:
+
+```text
+Creemos que [cliente especifico] tiene [problema concreto].
+Sabremos que es cierto cuando [senal medible].
+```
 
 ### Etapa 2 — Sabado: Validacion y Desarrollo
 
-- Customer discovery con usuarios reales
-- Experimentos rapidos con metricas y umbrales
-- Learning Cards y scoring de evidencia
-- Decision de pivot o perseverar
-- MVP con scope brutalmente recortado
-- Lean Canvas con celdas validadas, hipoteticas o vacias
-- Briefs de mentorias
+El sabado es el dia mas importante. El error tipico es ponerse a construir desde temprano sin saber si el problema existe.
+
+Lo importante del sabado:
+
+- Salir a hablar con usuarios reales
+- Hacer preguntas sobre comportamiento, no sobre opiniones
+- Validar problema, solucion, pago y canal
+- Medir evidencia con scoring
+- Decidir si pivotar o perseverar
+- Recortar el MVP a un solo flujo demostrable
+- Usar mentorias con preguntas especificas
+- Preparar un primer borrador del pitch
+
+El sabado no busca perfeccion. Busca evidencia.
+
+Si nadie confirma el problema, se pivota. Si hay interes pero nadie se compromete, se cambia el experimento. Si hay evidencia fuerte, se construye el flujo core.
+
+Al final del sabado, el equipo deberia tener:
+
+- Entrevistas o pruebas documentadas
+- Puntaje de evidencia
+- Decision clara de pivot o perseverar
+- MVP o prototipo que demuestre la propuesta de valor
+- Lean Canvas con que esta validado y que sigue siendo hipotesis
 
 ### Etapa 3 — Domingo: Pitch Final
 
-- Pitch de 5 minutos con timestamps
-- Deck slide por slide
-- Demo y backup tecnico
-- Q&A para jueces
-- Respuestas sobre validacion, negocio, competencia, riesgo, equipo y primeros 100 clientes
+El domingo no es para descubrir el negocio desde cero. Es para contar con claridad lo que aprendieron y demostrar que el equipo puede ejecutar.
+
+Lo importante del domingo:
+
+- Ordenar el pitch de 5 minutos
+- Preparar un deck simple
+- Ensayar con cronometro
+- Probar la demo varias veces
+- Tener backup tecnico
+- Preparar respuestas para jueces
+- Explicar usuario, comprador, precio, mercado, competencia y primeros 100 clientes
+- Mostrar la evidencia mas fuerte, no solo decir "hicimos entrevistas"
+
+El mejor pitch no es el mas largo ni el mas bonito. Es el que explica:
+
+```text
+Problema real.
+Cliente claro.
+Evidencia concreta.
+Solucion simple.
+Modelo entendible.
+Equipo capaz.
+Siguiente paso.
+```
+
+---
+
+## Como Usarlo Si No Eres Tecnico
+
+No necesitas instalar nada para empezar.
+
+Opcion simple:
+
+1. Abre ChatGPT, Claude o Gemini.
+2. Copia el contenido de `prompts/universal-system-prompt.md`.
+3. Pegalo como instrucciones o al inicio de una conversacion.
+4. Escribe en lenguaje normal que esta pasando.
+
+Ejemplos:
+
+```text
+Es viernes y quiero preparar mi pitch de 60 segundos.
+```
+
+```text
+Somos 5 en el equipo, es sabado y no sabemos a quien entrevistar.
+```
+
+```text
+Hicimos 8 entrevistas. 5 dijeron que tienen el problema, pero nadie pagaria.
+Que hacemos?
+```
+
+```text
+Es domingo. Tenemos MVP, pero el pitch esta desordenado.
+Ayudanos a prepararlo para jueces.
+```
+
+El mentor te va a responder con:
+
+- Preguntas concretas
+- Plantillas rellenables
+- Checklists
+- Scripts de entrevista
+- Decisiones recomendadas
+- Pitch y deck estructurados
 
 ---
 
@@ -272,6 +378,8 @@ Ver [INSTALL.md](INSTALL.md) para instrucciones detalladas.
 
 ```text
 startup-weekend-metodologia/
+├── assets/
+│   └── startup-weekend-mentor-banner.svg
 ├── SKILL.md
 ├── INSTALL.md
 ├── README.md

@@ -1,0 +1,25 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Startup Weekend Mentor</title>
+  <desc id="desc">Banner for Startup Weekend Mentor with large Startup Weekend lettering and a validation-focused subtitle.</desc>
+  <rect width="1200" height="360" rx="28" fill="#F7FAFC"/>
+  <rect x="36" y="36" width="1128" height="288" rx="24" fill="white" stroke="#D8E1E8" stroke-width="2"/>
+  <g transform="translate(92 82)">
+    <circle cx="36" cy="0" r="12" fill="#10A957"/>
+    <circle cx="58" cy="16" r="8" fill="#10A957"/>
+    <circle cx="28" cy="22" r="6" fill="#10A957"/>
+    <path d="M18 44H76L64 90V184H30V90L18 44Z" fill="none" stroke="#10A957" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M31 92C42 82 51 111 64 99" stroke="#10A957" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="42" cy="123" r="6" fill="#10A957"/>
+    <circle cx="55" cy="148" r="5" fill="#10A957"/>
+    <circle cx="39" cy="164" r="4" fill="#10A957"/>
+    <path d="M32 184C38 140 56 140 62 184" stroke="#10A957" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="210" y="140" font-family="Inter, Arial, Helvetica, sans-serif" font-size="72" font-weight="800" fill="#1F2A33" letter-spacing="0">STARTUP WEEKEND</text>
+  <text x="214" y="190" font-family="Inter, Arial, Helvetica, sans-serif" font-size="28" font-weight="500" fill="#5B7182" letter-spacing="0">Mentor digital para validar, construir y presentar en 54 horas</text>
+  <rect x="214" y="224" width="256" height="48" rx="24" fill="#10A957"/>
+  <text x="245" y="256" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="white" letter-spacing="0">Validacion en 24h</text>
+  <rect x="492" y="224" width="256" height="48" rx="24" fill="#1F2A33"/>
+  <text x="525" y="256" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="white" letter-spacing="0">MVP sin humo</text>
+  <rect x="770" y="224" width="270" height="48" rx="24" fill="#6B8EA8"/>
+  <text x="805" y="256" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="white" letter-spacing="0">Pitch con evidencia</text>
+</svg>
