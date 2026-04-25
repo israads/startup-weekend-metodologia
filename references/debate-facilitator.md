@@ -58,6 +58,8 @@ EVIDENCIA OBTENIDA:
 - Entrevistas completadas: ___
 - Confirman el problema: ___ / ___  (___%)
 - Confirman disposición a pagar: ___ / ___ (___%)
+- Puntaje de evidencia acumulada: ___ puntos
+- Compromisos observables: ___ emails / ___ referidos / ___ demos / ___ pilotos / ___ pagos
 - Señal inesperada encontrada: [Sí/No → qué fue]
 
 DIAGNÓSTICO:
@@ -70,6 +72,7 @@ DIAGNÓSTICO:
 | El problema no existe como pensaban | <6/10 confirmaciones | **Pivot de problema o segmento** |
 | Encontraron un problema más grande | Emergió en las entrevistas | **Pivot a la nueva oportunidad** |
 | No hay datos suficientes | <5 entrevistas | **Hacer más entrevistas (2h máx)** |
+| Hay entrevistas positivas pero <15 puntos de evidencia | Opiniones sin acciones observables | **Validar rápido antes de construir** |
 
 **Preguntas del mentor para el debate de pivot:**
 ```
@@ -83,7 +86,9 @@ Si pivotaran ahora, ¿tienen tiempo de construir algo nuevo para el domingo?
 [Si no: mejor refinar que abandonar]
 
 ¿Hay algún insight de las entrevistas que apunte a un problema MÁS urgente?
-[Si sí: ese puede ser el pivot correcto]"
+[Si sí: ese puede ser el pivot correcto]
+
+¿Qué experimento de 60 minutos puede convertir esta opinión en compromiso real?"
 ```
 
 ---

@@ -171,8 +171,8 @@ PREGUNTA 5 (cuantificación):
 "¿Cuánto tiempo/dinero te cuesta este problema al mes?"
 
 CIERRE (sin vender):
-"Si existiera algo que resolviera X, ¿lo usarías?
-¿Me dejarías tu email para contarte cuando esté disponible?"
+"Mañana vamos a probar un flujo simple para resolver X.
+Si te hace sentido después de verlo, ¿te puedo agendar una prueba o pedir un referido?"
 ```
 
 ### Lista de contactos a conseguir el viernes

@@ -9,3 +9,5 @@ Cuando trabajes en este proyecto:
 - El skill principal de Claude Code está en `SKILL.md`
 - Las referencias detalladas están en `references/`
 - Los prompts para otras plataformas están en `prompts/`
+- La validación rápida está en `references/validacion-rapida.md`
+- "Me gusta" no valida; buscar acciones observables como email, referido, piloto, LOI, pago o uso real

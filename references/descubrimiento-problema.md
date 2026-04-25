@@ -235,6 +235,16 @@ HIPÓTESIS DE NEGOCIO:
 Sabremos que esto es cierto cuando [ACCIÓN DE COMPRA O PRE-COMPRA]."
 ```
 
+Después de escribir cada hipótesis, convertirla en un Test Card de 30-90 minutos:
+
+```
+Supuesto riesgoso: [Qué debe ser verdad]
+Test: [Qué haremos hoy]
+Métrica: [Acción observable]
+Umbral: [N de M antes de hora]
+Decisión si falla: [Pivotar / cambiar segmento / cambiar solución / recortar]
+```
+
 **Ejemplo completo:**
 ```
 HIPÓTESIS DE PROBLEMA:
@@ -265,6 +275,9 @@ o digan un número específico de cuánto pagarían."
 
 "¿Cuál es el supuesto más importante que tiene que ser verdad para que su negocio funcione?
 ¿Cómo pueden probar ese supuesto en las próximas 3 horas?"
+
+"¿Qué acción observable contaría más que una opinión positiva?
+¿Email, referido, demo agendada, piloto, carta de intención o pago?"
 ```
 
 ---

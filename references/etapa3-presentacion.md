@@ -41,10 +41,13 @@
 **Validación:**
 - "¿Realmente hablaron con clientes o solo asumen que el problema existe?"
 - Señal positiva: citan entrevistas con nombres o quotes directos
+- Señal fuerte: muestran acciones observables como referidos, demos agendadas, pilotos, cartas de intención o pagos
 - Señal negativa: "Creemos que los usuarios..." sin evidencia
 
 **Modelo de negocio:**
 - "¿Cómo ganarán dinero? ¿Tiene sentido el precio que proponen?"
+- "¿Quién usa el producto y quién paga? Si son distintos, ¿cómo llegan a cada uno?"
+- "¿Cómo conseguirán los primeros 100 clientes?"
 - Señal positiva: precio específico + supuesto de CAC/LTV o unit economics básicos
 - Señal negativa: "Aún no definimos cómo monetizar"
 
@@ -83,11 +86,14 @@
 [2:00 – 2:30]  VALIDACIÓN / TRACCIÓN
                "Hablamos con 15 restaurantes este fin de semana."
                Citar el hallazgo más poderoso + 1-2 quotes directos.
-               Si hay pre-registros o compromisos de pago, mencionarlos.
+               Mostrar compromisos observables: emails, referidos, demos,
+               pilotos, cartas de intención o pagos.
 
 [2:30 – 3:00]  MERCADO + MODELO
                Tamaño del mercado accesible (SAM, no TAM).
                Modelo de monetización en una frase + precio.
+               Usuario vs comprador si son distintos.
+               Canal para los primeros 100 clientes.
                Unit economics simples si aplica.
 
 [3:00 – 3:30]  EL EQUIPO
@@ -137,6 +143,13 @@ Si no: "Aún no cobramos, pero [N] personas nos dejaron su email y [X] dijeron q
 pagarían $[precio] cuando esté disponible. Nuestro siguiente paso es..."
 ```
 
+**Q2b: "¿Cuál fue la evidencia más fuerte, no solo entrevistas?"**
+```
+"La señal más fuerte fue [pago / piloto agendado / LOI / referido / demo].
+Además acumulamos [puntaje] puntos de evidencia: [resumen corto].
+Eso nos hizo decidir [perseverar / pivotar / recortar] porque [razón]."
+```
+
 **Q3: "¿Cuál es su competencia directa?"**
 ```
 "Identificamos [COMPETENCIA A] y [COMPETENCIA B].
@@ -165,6 +178,14 @@ Es [X]% menos que [alternativa actual] y genera [beneficio cuantificado]."
 "El TAM (mercado total) en México es $[número], pero nuestro SAM (mercado accesible)
 en la etapa inicial son [segmento específico], que representa $[número].
 En 12 meses, apuntamos a capturar [%] de ese SAM, lo que equivale a $[ingreso]."
+```
+
+**Q6b: "¿Cómo conseguirán sus primeros 100 clientes?"**
+```
+"Nuestro primer canal será [canal específico] porque durante el fin de semana
+conseguimos [N] conversaciones / [N] referidos / [N]% de respuesta por ahí.
+El proceso inicial será manual: [paso 1] → [paso 2] → [paso 3].
+No intentaremos escalar hasta repetir este canal con [umbral concreto]."
 ```
 
 ### Sobre el MVP y el equipo
@@ -349,5 +370,5 @@ Entre 8 y 12. Menos de 8 suele ser insuficiente para cubrir todo; más de 12 es 
 Sí, siempre. Si no mencionas competencia, los jueces asumen que no investigaste el mercado. La respuesta correcta muestra que conoces a tu competencia y explicas tu diferenciador.
 
 **¿Qué pasa si ganamos o si no ganamos?**
-Si ganan: el premio suele incluir acceso a aceleradoras, créditos de AWS/Google Cloud, o dinero en efectivo. Más importante: la red de contactos del evento vale más que el premio.
+Si ganan: el premio suele incluir acceso a mentoría, comunidad, créditos de herramientas, espacios de trabajo o servicios para seguir construyendo. Más importante: la red de contactos del evento vale más que el premio.
 Si no ganan: los aprendizajes del fin de semana (validación, red, experiencia) tienen más valor que cualquier competencia. La mayoría de las startups exitosas de Startup Weekend no ganaron el evento.

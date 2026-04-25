@@ -41,6 +41,7 @@ No puedes validar tu idea hablando con tu equipo, tus amigos o tu familia. Debes
 | Total de entrevistas | 10 | 15-20 |
 | Por segmento | 5 | 8-10 |
 | Entrevistas presenciales | 3 | 7+ |
+| Compromisos observables | 3 | 5+ |
 
 ### Las 3 hipótesis a validar (en orden)
 
@@ -52,10 +53,29 @@ HIPÓTESIS 2: Tu solución lo resuelve
 → Evidencia: Al menos 5 de 10 entienden el valor sin explicación extensa
 
 HIPÓTESIS 3: La gente pagaría por ello
-→ Evidencia: Al menos 3 de 10 dan datos de contacto o pre-compromiso de pago
+→ Evidencia: Al menos 3 de 10 dan un compromiso observable: email, referido, demo agendada, piloto, carta de intención o pago
 ```
 
 Si no validas H1, pivotar el problema. Si no validas H2, pivotar la solución. Si no validas H3, pivotar el modelo de negocio.
+
+### Scoring de evidencia rápida
+
+No toda señal pesa igual. Una opinión positiva casi no valida; una acción observable sí.
+
+| Evidencia | Puntos |
+|-----------|--------|
+| Dice "suena interesante" | 1 |
+| Cuenta una historia reciente del problema | 2 |
+| Ya usa un workaround manual | 3 |
+| Cuantifica costo en tiempo/dinero | 4 |
+| Deja email o teléfono | 5 |
+| Da referido | 6 |
+| Agenda demo o piloto | 7 |
+| Firma carta de intención simple | 8 |
+| Acepta piloto con fecha | 9 |
+| Paga o preordena | 10 |
+
+**Lectura rápida:** menos de 15 puntos = evidencia débil; 15-29 = señales iniciales; 30-49 = validación razonable para Startup Weekend; 50+ = evidencia fuerte.
 
 ### Dónde encontrar a tus usuarios (el sábado por la mañana)
 
@@ -108,14 +128,14 @@ No te voy a vender nada — necesito entender tu experiencia con [tema].
 
 **VALIDACIÓN DE SOLUCIÓN (solo si llegaste aquí con respuestas ricas):**
 ```
-8. "Si hubiera una forma de [propuesta de valor en una frase], ¿te interesaría?"
-   → NOTA: La respuesta casi siempre es "sí". Esta pregunta sola no valida nada.
+8. "Te muestro un flujo de 60 segundos. Mientras lo ves, dime qué harías tú en cada paso."
+   → Observar fricción real, no buscar aprobación.
 
-9. "¿Cuánto pagarías por eso al mes?"
-   → Una respuesta con número específico es validación. "No sé" o "depende" no.
+9. "Si el lunes te lo dejáramos funcionando por $[precio], ¿lo probarías con un caso real?"
+   → Un sí debe convertirse en agenda, piloto, referido o preorden.
 
-10. "¿Me dejarías tu email para contarte cuando esté disponible?"
-    → El email es el nivel mínimo de compromiso. Es más honesto que "me interesa".
+10. "¿Me dejarías tu email/teléfono para agendar esa prueba o enviarte el piloto?"
+    → El email es el nivel mínimo de compromiso. Demo agendada, piloto o pago pesan más.
 ```
 
 **CIERRE:**
@@ -131,14 +151,15 @@ Después de cada bloque de 5 entrevistas, hacer este ejercicio (20 minutos):
 
 **Tabla de síntesis:**
 ```
-| Entrevistado | Confirma el problema | Usa alternativas | Da email | Quote memorable |
-|--------------|----------------------|-----------------|----------|-----------------|
-| Persona 1    | Sí — "el 30% cancela"| Excel propio    | Sí       | "Pierdo $8k/mes"|
-| Persona 2    | No — "no es un issue"| WhatsApp        | No       | "Lo manejo bien"|
-| ...          | ...                  | ...             | ...      | ...             |
+| Entrevistado | Historia reciente | Workaround | Costo | Compromiso | Puntos | Quote memorable |
+|--------------|-------------------|------------|-------|------------|--------|-----------------|
+| Persona 1    | Sí — no-show ayer | Excel      | $8k/mes | Demo lunes | 16     | "Pierdo $8k/mes"|
+| Persona 2    | No recuerda caso  | WhatsApp   | N/A   | No         | 1      | "Lo manejo bien"|
+| ...          | ...               | ...        | ...   | ...        | ...    | ...             |
 ```
 
 **Si más del 60% NO confirma el problema → pivotar la hipótesis del problema.**
+**Si el puntaje total es menor a 15 → no construir app completa; hacer otro experimento rápido o cambiar segmento.**
 
 ---
 
@@ -150,7 +171,8 @@ A las 11:30-12:00 del sábado, el equipo debe hacer esta decisión conscientemen
 
 ```
 ¿Cuántas personas validaron el problema? __/__ entrevistados
-¿Cuántas personas validaron que pagarían? __/__ entrevistados
+¿Cuántos puntos de evidencia acumulada tienen? __ puntos
+¿Cuántas personas dieron compromiso observable? __/__ entrevistados
 ¿Cambió algo de nuestra comprensión del cliente? [Sí/No → qué cambió]
 ¿Nuestro MVP original sigue siendo el correcto? [Sí/No → qué ajustamos]
 ```
@@ -221,6 +243,17 @@ FUNCIONES OUT OF SCOPE (para después):
 CRITERIO DE "DONE" para el MVP:
 El MVP está listo cuando un usuario puede hacer [ACCIÓN ESPECÍFICA] sin ayuda del equipo.
 ```
+
+### Regla de scope según evidencia
+
+| Evidencia acumulada | MVP recomendado |
+|---------------------|-----------------|
+| <15 puntos | No construir app completa. Hacer entrevistas mejores, landing, Figma o concierge |
+| 15-29 puntos | Prototipo clickeable o concierge MVP con un solo flujo |
+| 30-49 puntos | Flujo core funcional, sin features secundarias |
+| 50+ puntos | Flujo core + una señal de tracción visible en la demo |
+
+**Regla:** construir solo lo que permite observar una acción del usuario o convencer a un juez de que la propuesta de valor funciona.
 
 ### Checklist de calidad del MVP
 

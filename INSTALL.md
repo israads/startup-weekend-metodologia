@@ -20,9 +20,14 @@ claude /startup-weekend
 **Comandos disponibles:**
 ```
 /startup-weekend              → Diagnóstico interactivo
+/startup-weekend comenzar     → Onboarding del evento y equipo
+/startup-weekend continuar    → Retomar sesión desde sesion/
 /startup-weekend progreso     → Tracker de progreso del equipo
 /startup-weekend descubrir    → Motor de descubrimiento del problema
+/startup-weekend validar-rapido → Test Card + experimento de 30-90 min
+/startup-weekend evidencias   → Learning Card + scoring acumulado
 /startup-weekend debatir      → Facilitador de debates (10 min)
+/startup-weekend duda         → Agente de situaciones comunes
 /startup-weekend etapa1       → Guía completa del viernes
 /startup-weekend etapa2       → Guía completa del sábado
 /startup-weekend etapa3       → Guía completa del domingo
@@ -92,7 +97,7 @@ Para usar en el editor de código Cursor.
 ```
 Eres el mentor digital de un equipo en Startup Weekend (54 horas).
 Siempre muestra: "ETAPA [X]/3 — [Nombre]" al inicio de cada respuesta.
-Modos: DESCUBRIR · DEBATIR · CONSTRUIR · REVISAR
+Modos: DESCUBRIR · VALIDAR RÁPIDO · DEBATIR · CONSTRUIR · REVISAR
 Para el sistema completo: lee el archivo prompts/universal-system-prompt.md de este proyecto.
 ```
 
@@ -142,7 +147,8 @@ Si no quieres instalar nada, puedes copiar este texto al inicio de cualquier con
 Actúa como el mentor digital de mi equipo en Startup Weekend (54 horas).
 Tu trabajo: hacer preguntas que el equipo no está haciendo, facilitar debates y producir outputs concretos.
 Siempre muestra "ETAPA [X]/3 — [Nombre]" al inicio de cada respuesta.
-Modos: DESCUBRIR (problema no claro) / DEBATIR (equipo atascado) / CONSTRUIR (necesito un output) / REVISAR (auditoría).
+Modos: DESCUBRIR (problema no claro) / VALIDAR RÁPIDO (experimento de 30-90 min + scoring) / DEBATIR (equipo atascado) / CONSTRUIR (necesito un output) / REVISAR (auditoría).
+Regla: "me gusta" no valida; busca acciones observables como email, referido, piloto, carta de intención, pago o uso real.
 Primero pregúntame: ¿En qué etapa del evento están? (Viernes, Sábado o Domingo)
 ```
 
@@ -158,6 +164,7 @@ startup-weekend-metodologia/
 ├── SKILL.md                                ← Claude Code (skill principal)
 ├── INSTALL.md                              ← Esta guía
 ├── README.md                               ← Descripción del proyecto
+├── LICENSE                                 ← Licencia MIT
 ├── .windsurfrules                          ← Windsurf config
 │
 ├── prompts/
@@ -169,7 +176,9 @@ startup-weekend-metodologia/
 └── references/
     ├── mentor-mode.md                      ← Cómo opera el mentor
     ├── descubrimiento-problema.md          ← Motor de descubrimiento
+    ├── validacion-rapida.md                ← Test Cards, Learning Cards y evidencia
     ├── debate-facilitator.md               ← Facilitación de debates
+    ├── faq-situaciones.md                  ← Agente de dudas y situaciones comunes
     ├── etapa1-ideacion.md                  ← Viernes: detalle completo
     ├── etapa2-validacion.md                ← Sábado: detalle completo
     ├── etapa3-presentacion.md              ← Domingo: detalle completo

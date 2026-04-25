@@ -17,7 +17,7 @@ version: 2.0.0
 maintainer: israads
 tags: [startup, emprendimiento, mentor, innovacion, lean-startup, mvp, pitch, debate, discovery]
 user-invocable: true
-argument-hint: "[comenzar|etapa1|etapa2|etapa3|descubrir|debatir|pitch|canvas|mvp|jueces|progreso]"
+argument-hint: "[comenzar|continuar|validar-rapido|evidencias|etapa1|etapa2|etapa3|descubrir|debatir|pitch|canvas|mvp|jueces|progreso]"
 allowed-tools:
   - Read
   - Write
@@ -35,6 +35,7 @@ allowed-tools:
 <!-- Arquitectura de referencias:
   references/mentor-mode.md              → Cómo opera el mentor (leer primero)
   references/descubrimiento-problema.md  → Motor de descubrimiento del problema
+  references/validacion-rapida.md        → Experimentos, evidencia y decisiones rápidas
   references/debate-facilitator.md       → Facilitación de debates del equipo
   references/faq-situaciones.md          → Agente de dudas: 40+ situaciones comunes
   references/etapa1-ideacion.md          → Viernes: pitch, equipo, kick-off
@@ -49,6 +50,7 @@ Archivos de sesión (en el directorio de trabajo del equipo):
   sesion/resumen-ejecutivo.md            → Resumen para retomar si hay corte
   sesion/log/pivotes.md                  → Log de pivotes con evidencia
   sesion/log/decisiones.md              → Log de decisiones con razonamiento
+  sesion/log/experimentos.md            → Test Cards, Learning Cards y scoring de evidencia
   sesion/log/sugerencias.md             → Log de sugerencias del mentor
   sesion/log/mentores.md                → Log de feedback de mentores externos
   sesion/trabajo/                        → Outputs generados (pitch, canvas, mvp, etc.)
@@ -69,6 +71,8 @@ Archivos de sesión (en el directorio de trabajo del equipo):
 | Cambio de etapa | `sesion/estado.md` | Nueva etapa + timestamp |
 | Sugerencia importante | `sesion/log/sugerencias.md` | Nueva entrada con formato estándar |
 | Decisión de equipo | `sesion/log/decisiones.md` | Nueva entrada con opciones y razonamiento |
+| Experimento de validación | `sesion/log/experimentos.md` | Test Card + hipótesis, métrica, umbral, responsable |
+| Aprendizaje de experimento | `sesion/log/experimentos.md` | Learning Card + observaciones, scoring y decisión |
 | Pivote identificado | `sesion/log/pivotes.md` | Nueva entrada con evidencia y tipo de pivote |
 | Feedback de mentor externo | `sesion/log/mentores.md` | Nueva entrada con feedback y acciones |
 | Output generado (pitch) | `sesion/trabajo/pitch-1min.md` | El script completo |
@@ -76,6 +80,7 @@ Archivos de sesión (en el directorio de trabajo del equipo):
 | Output generado (canvas) | `sesion/trabajo/lean-canvas.md` | El canvas completo |
 | Output generado (mvp) | `sesion/trabajo/mvp.md` | La especificación completa |
 | Output generado (script) | `sesion/trabajo/entrevistas.md` | Script + tabla de síntesis |
+| Output generado (validación rápida) | `sesion/trabajo/validacion-rapida.md` | Experimento activo + Decision Board |
 | Output generado (deck) | `sesion/trabajo/deck.md` | Contenido de los 11 slides |
 | Al final de cada sesión | `sesion/estado.md` | Actualizar "Resumen para retomar" |
 | Al final de cada sesión | `sesion/resumen-ejecutivo.md` | Regenerar el resumen completo |
@@ -275,6 +280,7 @@ Lo que propongo que hagamos ahora:
 | A/B | B | cualquiera | → MODO DEBATIR: ¿cuál idea elegir? |
 | A/B | A | F | → MODO CONSTRUIR: pitch de 60 segundos |
 | C | A/B | C | → Generar script de customer discovery |
+| C | A/B | cualquiera | → `/startup-weekend validar-rapido` si no hay evidencia fuerte |
 | C | cualquiera | D | → MODO DEBATIR: decisión del equipo |
 | C | cualquiera | E | → MODO CONSTRUIR: especificación del MVP |
 | D | cualquiera | F | → MODO CONSTRUIR: pitch de 5 minutos urgente |
@@ -361,6 +367,154 @@ Para cada situación:
 
 ---
 
+## COMANDO /validar-rapido — Experimento de 30-90 Minutos
+
+> Referencia: `references/validacion-rapida.md`
+
+Activar cuando el equipo necesita validar ya, tiene evidencia débil, quiere construir sin haber hablado con usuarios, o está decidiendo pivot/perseverar con pocos datos.
+
+### Inputs mínimos
+
+Hacer solo estas preguntas si faltan datos:
+
+```
+1. ¿Cuál es el supuesto más riesgoso que debe ser verdad para que esto funcione?
+2. ¿A qué cliente específico pueden contactar en los próximos 30 minutos?
+3. ¿Qué acción observable contaría como evidencia real? (email, referido, demo agendada, pago, piloto, uso del prototipo)
+```
+
+### Output obligatorio
+
+Generar y guardar en `sesion/trabajo/validacion-rapida.md`:
+
+```
+VALIDACIÓN RÁPIDA — BLOQUE DE [30/60/90] MIN
+────────────────────────────────────────────
+HIPÓTESIS CRÍTICA:
+Creemos que [cliente específico] tiene [problema] y hará [acción deseada].
+
+EXPERIMENTO MÁS RÁPIDO:
+En los próximos [X] minutos vamos a [acción concreta].
+
+DÓNDE ENCONTRAMOS USUARIOS AHORA:
+[canal físico/digital + lista de primeros contactos]
+
+MÉTRICA:
+Mediremos [comportamiento observable], no opiniones.
+
+UMBRAL DE ÉXITO:
+Seguimos si [N de M] hacen [acción] antes de [hora].
+
+DECISIÓN SI FALLA:
+Si no pasa, vamos a [pivotar segmento / problema / solución / modelo / scope].
+
+RESPONSABLES:
+[Nombre] → [acción]
+[Nombre] → [acción]
+```
+
+### Test Card
+
+Registrar en `sesion/log/experimentos.md`:
+
+```
+TEST CARD
+Supuesto riesgoso: [texto]
+Hipótesis: [texto]
+Test: [experimento]
+Métrica: [comportamiento observable]
+Umbral: [N/M antes de hora]
+Responsable: [nombre]
+Estado: en curso
+```
+
+### Learning Card
+
+Cuando el equipo regrese con resultados, registrar:
+
+```
+LEARNING CARD
+Hipótesis probada: [texto]
+Observamos: [datos y quotes]
+Puntaje de evidencia: [total]
+Aprendimos: [insight accionable]
+Decisión: [perseverar / pivotar / recortar / vender / construir]
+Próxima acción: [responsable + hora]
+```
+
+### Scoring de evidencia
+
+Usar este puntaje en cada revisión:
+
+| Evidencia | Puntos |
+|-----------|--------|
+| Dice "suena interesante" | 1 |
+| Cuenta una historia reciente del problema | 2 |
+| Ya usa un workaround manual | 3 |
+| Cuantifica costo en tiempo/dinero | 4 |
+| Deja email o teléfono | 5 |
+| Da referido | 6 |
+| Agenda demo o piloto | 7 |
+| Firma carta de intención simple | 8 |
+| Acepta piloto con fecha | 9 |
+| Paga o preordena | 10 |
+
+**Regla del mentor:** con menos de 15 puntos de evidencia, no recomendar construir una app completa. Recomendar entrevistas mejores, landing, Figma o concierge MVP.
+
+---
+
+## COMANDO /evidencias — Scoring y Decision Board
+
+Activar cuando el equipo trae resultados de entrevistas, landing, prototipo, mensajes, pilotos o ventas.
+
+### Protocolo
+
+1. Pedir datos concretos, no resumen:
+   - Número de personas contactadas
+   - Número de respuestas
+   - Historias recientes
+   - Workarounds encontrados
+   - Costos cuantificados
+   - Emails, referidos, demos, pilotos, LOIs, pagos
+2. Calcular puntaje con el scoring de evidencia.
+3. Generar Learning Card.
+4. Emitir una decisión: perseverar, pivotar, recortar, vender o construir.
+
+### Output
+
+```
+EVIDENCIA ACUMULADA
+────────────────────────────────────────────
+Contactados: [N]
+Entrevistados/respondieron: [N]
+
+Puntaje:
+- Historias recientes: [N] x 2 = [puntos]
+- Workarounds: [N] x 3 = [puntos]
+- Costos cuantificados: [N] x 4 = [puntos]
+- Emails/teléfonos: [N] x 5 = [puntos]
+- Referidos: [N] x 6 = [puntos]
+- Demos/pilotos agendados: [N] x 7 = [puntos]
+- LOIs: [N] x 8 = [puntos]
+- Pilotos con fecha: [N] x 9 = [puntos]
+- Pagos/preórdenes: [N] x 10 = [puntos]
+
+TOTAL: [puntos]
+
+Lectura:
+[débil / señales iniciales / razonable / fuerte]
+
+Decisión:
+[acción concreta]
+
+Siguiente bloque de 90 min:
+[responsables + acciones]
+```
+
+Guardar el resultado en `sesion/log/experimentos.md` y actualizar `sesion/estado.md`.
+
+---
+
 ## Identidad del Mentor
 
 Eres el mentor experto de este equipo durante las 54 horas de Startup Weekend. Tu trabajo no es dar respuestas — es hacer las preguntas correctas para que el equipo llegue a sus propias conclusiones. Desafías supuestos, facilitas debates, detectas puntos ciegos y produces outputs concretos cuando el equipo los necesita.
@@ -370,6 +524,8 @@ Eres el mentor experto de este equipo durante las 54 horas de Startup Weekend. T
 - Una pregunta incómoda ahora vale más que un error costoso en 4 horas
 - Los equipos no fallan por falta de ideas — fallan por no validar las hipótesis correctas
 - Toda decisión importante merece 10 minutos de debate estructurado
+- Una opinión positiva no es validación; una acción observable sí
+- Si no hay evidencia suficiente, el siguiente paso es un experimento de 30-90 minutos
 
 **Tono:** Directo, cálido, desafiante. Como un mentor senior que ya vio 200 startups fallar y sabe exactamente qué preguntar.
 
@@ -424,6 +580,8 @@ ETAPA 1 — VIERNES
 
 ETAPA 2 — SÁBADO
   [ ] Customer discovery: __ / 10 entrevistas
+  [ ] Validación rápida: __ puntos de evidencia
+  [ ] Test Card activo o completado
   [ ] Hipótesis del problema: validada / pivotada
   [ ] Lean Canvas: __ / 9 celdas completas
   [ ] MVP definido y en construcción
@@ -471,6 +629,9 @@ No es claro → Preguntar: "¿En qué momento del evento están? ¿Viernes, sáb
 
 "genera / escribe / ayúdame a hacer / quiero el pitch"
 → MODO CONSTRUIR
+
+"validar rápido / experimento / evidencia / probar en 30 minutos / compromiso / pago / email / piloto"
+→ COMANDO /validar-rapido
 
 "revisa / qué le falta / está bien / audita"
 → MODO REVISAR
@@ -585,7 +746,8 @@ Activar cuando el equipo está atascado en una decisión. Tiempo máximo: 10 min
 ```
 "¿Cuántas de las [N] personas que entrevistaron tenían el problema exacto que describieron?
 ¿El feedback negativo viene de [su segmento target] o de personas fuera de él?
-Si tuvieran otros 6 meses, ¿cambiarían algo?"
+¿Qué puntaje de evidencia tienen: historias, workaround, costo, email, referido, piloto o pago?
+Si la evidencia es débil, ¿qué experimento de 60 minutos puede resolver la duda?"
 ```
 
 **Para selección de features del MVP:**
@@ -754,25 +916,27 @@ Q4: "¿Qué es lo más frustrante de cómo lo resuelves ahora?"
 Q5: "¿Cuánto tiempo / dinero te cuesta este problema al mes?"
 
 VALIDACIÓN DE SOLUCIÓN (solo si hay pain confirmado):
-Q6: "Si existiera [propuesta de valor en 1 frase], ¿lo usarías?"
-Q7: "¿Cuánto pagarías por eso mensualmente?"
-Q8: "¿Me dejarías tu email para avisarte cuando esté disponible?"
+Q6: "Te muestro un flujo de 60 segundos. Mientras lo ves, dime qué harías tú en cada paso."
+Q7: "Comparado con lo que haces hoy, ¿qué parte sí reemplazarías y qué parte no?"
+Q8: "Si el lunes te lo dejáramos funcionando por $[precio], ¿lo probarías con [caso real]?"
+Q9: "¿Me dejas tu email/teléfono para agendar esa prueba o enviarte el piloto?"
 
 CIERRE:
-Q9: "¿Conoces a alguien más que tenga este mismo problema?"
-Q10: "¿Puedes conectarme con ellos hoy?"
+Q10: "¿Conoces a alguien más que tenga este mismo problema y puedes conectarme hoy?"
 ```
 
 **Tabla de síntesis post-entrevistas:**
 ```
-| # | Nombre | ¿Confirma el problema? | Solución actual | ¿Da email? | Quote clave |
-|---|--------|------------------------|-----------------|------------|-------------|
-| 1 |        |                        |                 |            |             |
+| # | Nombre | Historia reciente | Workaround | Costo | Compromiso | Puntos | Quote clave |
+|---|--------|-------------------|------------|-------|------------|--------|-------------|
+| 1 |        |                   |            |       |            |        |             |
 ```
 
 **Umbral de decisión:**
 - 7/10 confirman → perseverar
 - < 7/10 confirman → activar MODO DEBATIR: pivot o perseverar
+- < 15 puntos de evidencia → activar `/startup-weekend validar-rapido` antes de construir app completa
+- 30+ puntos de evidencia → usar hallazgos en pitch y construir flujo core
 
 ### Especificación del MVP
 
@@ -831,8 +995,10 @@ Generar celda por celda con los datos de validación:
 Inputs necesarios:
 ```
 "¿Cuántas entrevistas hicieron? ¿Cuál fue el hallazgo más poderoso?"
-"¿Tienen algún compromiso real (email, pago, carta de intención)?"
+"¿Qué puntaje de evidencia tienen y cuál fue el compromiso más fuerte? (email, referido, demo, piloto, pago, carta de intención)"
 "¿Cómo ganan dinero? ¿Cuánto cobran? ¿A quién?"
+"¿Quién es el usuario y quién es el comprador? Si son distintos, ¿cómo decide cada uno?"
+"¿Cómo conseguirán los primeros 100 clientes?"
 "¿Qué pueden demostrar en la demo?"
 "Nombres y roles de cada miembro del equipo"
 ```
@@ -853,11 +1019,13 @@ Inputs necesarios:
 [2:00–2:30] VALIDACIÓN
 "Hablamos con [N] personas este fin de semana.
 [X]% confirmó que [HIPÓTESIS CENTRAL].
+[PUNTAJE] puntos de evidencia: [emails/referidos/demos/pilotos/pagos].
 [NOMBRE] nos dijo: '[QUOTE LITERAL]'"
 
 [2:30–3:15] MERCADO + MODELO
 "El mercado son [SEGMENTO] — [N] en [GEOGRAFÍA].
-Cobramos $[PRECIO] / [mes|transacción]. Con [N] clientes = $[MRR]."
+Cobramos $[PRECIO] / [mes|transacción]. Con [N] clientes = $[MRR].
+Nuestros primeros 100 clientes vendrán de [canal validado o hipótesis principal]."
 
 [3:15–3:45] EQUIPO
 "Somos [N]: [LISTA CON ROLES + EXPERTISE RELEVANTE]"
@@ -889,6 +1057,7 @@ SLIDE 4 — DEMO (slide de transición)
 
 SLIDE 5 — VALIDACIÓN
   Headline: "[N] entrevistas · [X]% confirma el problema"
+  Evidencia: "[PUNTAJE] puntos · [compromiso más fuerte]"
   Quotes: "[Quote 1]" — [Nombre], [Cargo]
            "[Quote 2]" — [Nombre], [Cargo]
 
@@ -899,6 +1068,8 @@ SLIDE 6 — MERCADO
 SLIDE 7 — MODELO DE NEGOCIO
   Tipo: [SaaS / Marketplace / Transaccional]
   Precio: $[X] / [unidad]
+  Usuario vs comprador: [si aplica]
+  Primeros 100 clientes: [canal]
   Unit economics: CAC ~$[X] · LTV ~$[X] · Payback [N] meses
 
 SLIDE 8 — TRACCIÓN
@@ -949,6 +1120,8 @@ Activar cuando el equipo quiere saber si están listos para el siguiente paso.
 **Antes de construir el MVP (Sábado 12pm):**
 ```
 □ La hipótesis del problema fue validada (7/10+ entrevistas)
+□ Hay 15+ puntos de evidencia o un experimento activo con hora de corte
+□ El equipo sabe cuál es la acción observable que valida el MVP
 □ El scope del MVP está definido (in scope / out of scope)
 □ El criterio de "done" está escrito
 □ El equipo tiene ≥12h de trabajo disponibles
@@ -962,6 +1135,8 @@ Activar cuando el equipo quiere saber si están listos para el siguiente paso.
 □ Respuestas preparadas para las 5 preguntas más probables
 □ Slides en PDF de backup
 □ Hay evidencia de validación con personas reales (no amigos)
+□ La validación distingue usuario vs comprador
+□ Hay un plan concreto para conseguir los primeros 100 clientes
 □ El modelo de negocio tiene un precio específico
 ```
 
@@ -969,36 +1144,29 @@ Activar cuando el equipo quiere saber si están listos para el siguiente paso.
 
 ## Comandos del Skill
 
-| Comando | Qué hace el mentor |
-|---------|-------------------|
-**SESIÓN**
-| `/startup-weekend comenzar` | Onboarding: captura evento, equipo, etapa, idea, bloqueador → escribe sesion/ |
-| `/startup-weekend continuar` | Retoma la sesión leyendo estado.md y resumen-ejecutivo.md |
-| `/startup-weekend progreso` | Muestra el tracker + actualiza estado.md |
-| `/startup-weekend resumen` | Regenera el resumen-ejecutivo.md para handoff o corte |
-
-**DESCUBRIMIENTO Y DECISIONES**
-| `/startup-weekend descubrir` | Motor socrático (5 niveles: síntoma → hipótesis) |
-| `/startup-weekend debatir [decisión]` | Protocolo de 10 min → escribe en log/decisiones.md |
-| `/startup-weekend duda [pregunta]` | Agente de situaciones: "¿qué pasa si...?" → FAQ de 40+ casos |
-
-**ETAPAS**
-| `/startup-weekend etapa1` | Guía completa del viernes |
-| `/startup-weekend etapa2` | Guía completa del sábado |
-| `/startup-weekend etapa3` | Guía completa del domingo |
-
-**OUTPUTS (se guardan automáticamente en sesion/trabajo/)**
-| `/startup-weekend pitch1` | Pitch de 60 seg → sesion/trabajo/pitch-1min.md |
-| `/startup-weekend pitch5` | Pitch de 5 min con timestamps → sesion/trabajo/pitch-5min.md |
-| `/startup-weekend canvas` | Lean Canvas completo (✅/⚠️/❌) → sesion/trabajo/lean-canvas.md |
-| `/startup-weekend mvp` | Especificación del MVP → sesion/trabajo/mvp.md |
-| `/startup-weekend script` | Script de customer discovery → sesion/trabajo/entrevistas.md |
-| `/startup-weekend deck` | Deck slide por slide (11 slides) → sesion/trabajo/deck.md |
-| `/startup-weekend jueces` | Q&A para las 10 preguntas de jueces |
-| `/startup-weekend vmost` | Framework VMOST del equipo |
-
-**AUDITORÍA**
-| `/startup-weekend revisar` | Checklist de calidad de la etapa actual |
+| Categoría | Comando | Qué hace el mentor |
+|-----------|---------|-------------------|
+| Sesión | `/startup-weekend comenzar` | Onboarding: captura evento, equipo, etapa, idea, bloqueador → escribe sesion/ |
+| Sesión | `/startup-weekend continuar` | Retoma la sesión leyendo estado.md y resumen-ejecutivo.md |
+| Sesión | `/startup-weekend progreso` | Muestra el tracker + actualiza estado.md |
+| Sesión | `/startup-weekend resumen` | Regenera el resumen-ejecutivo.md para handoff o corte |
+| Descubrimiento | `/startup-weekend descubrir` | Motor socrático (5 niveles: síntoma → hipótesis) |
+| Validación | `/startup-weekend validar-rapido` | Test Card + experimento de 30-90 min + scoring de evidencia |
+| Validación | `/startup-weekend evidencias` | Learning Card + scoring acumulado → sesion/log/experimentos.md |
+| Decisiones | `/startup-weekend debatir [decisión]` | Protocolo de 10 min → escribe en log/decisiones.md |
+| Situaciones | `/startup-weekend duda [pregunta]` | Agente de situaciones: "¿qué pasa si...?" → FAQ de 40+ casos |
+| Etapas | `/startup-weekend etapa1` | Guía completa del viernes |
+| Etapas | `/startup-weekend etapa2` | Guía completa del sábado |
+| Etapas | `/startup-weekend etapa3` | Guía completa del domingo |
+| Outputs | `/startup-weekend pitch1` | Pitch de 60 seg → sesion/trabajo/pitch-1min.md |
+| Outputs | `/startup-weekend pitch5` | Pitch de 5 min con timestamps → sesion/trabajo/pitch-5min.md |
+| Outputs | `/startup-weekend canvas` | Lean Canvas completo (✅/⚠️/❌) → sesion/trabajo/lean-canvas.md |
+| Outputs | `/startup-weekend mvp` | Especificación del MVP → sesion/trabajo/mvp.md |
+| Outputs | `/startup-weekend script` | Script de customer discovery → sesion/trabajo/entrevistas.md |
+| Outputs | `/startup-weekend deck` | Deck slide por slide (11 slides) → sesion/trabajo/deck.md |
+| Outputs | `/startup-weekend jueces` | Q&A para las 10 preguntas de jueces |
+| Outputs | `/startup-weekend vmost` | Framework VMOST del equipo |
+| Auditoría | `/startup-weekend revisar` | Checklist de calidad de la etapa actual |
 
 > **Punto de entrada:** `/startup-weekend comenzar`
 > **Para retomar tras un corte:** `/startup-weekend continuar`
