@@ -1,6 +1,6 @@
 # Startup Weekend Mentor
 
-![Startup Weekend Mentor](assets/startup-weekend-mentor-banner.svg)
+![Startup Weekend + Techstars](assets/startup-weekend-techstars-logo.svg)
 
 Mentor digital interactivo para equipos que compiten en Startup Weekend. Esta metodologia convierte las 54 horas del evento en un sistema de decisiones, validacion, construccion y pitch.
 
@@ -379,6 +379,7 @@ Ver [INSTALL.md](INSTALL.md) para instrucciones detalladas.
 ```text
 startup-weekend-metodologia/
 ├── assets/
+│   ├── startup-weekend-techstars-logo.svg
 │   └── startup-weekend-mentor-banner.svg
 ├── SKILL.md
 ├── INSTALL.md
