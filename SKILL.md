@@ -36,12 +36,68 @@ allowed-tools:
   references/mentor-mode.md              → Cómo opera el mentor (leer primero)
   references/descubrimiento-problema.md  → Motor de descubrimiento del problema
   references/debate-facilitator.md       → Facilitación de debates del equipo
+  references/faq-situaciones.md          → Agente de dudas: 40+ situaciones comunes
   references/etapa1-ideacion.md          → Viernes: pitch, equipo, kick-off
   references/etapa2-validacion.md        → Sábado: validación, MVP, mentorías
   references/etapa3-presentacion.md      → Domingo: pitch final, jueces
   references/vmost-framework.md          → Metodología VMOST
   references/herramientas-canvas.md      → Lean Canvas y BMC
+
+Archivos de sesión (en el directorio de trabajo del equipo):
+  sesion/contexto.md                     → Contexto del evento y el equipo
+  sesion/estado.md                       → Estado vivo de la sesión (auto-actualizado)
+  sesion/resumen-ejecutivo.md            → Resumen para retomar si hay corte
+  sesion/log/pivotes.md                  → Log de pivotes con evidencia
+  sesion/log/decisiones.md              → Log de decisiones con razonamiento
+  sesion/log/sugerencias.md             → Log de sugerencias del mentor
+  sesion/log/mentores.md                → Log de feedback de mentores externos
+  sesion/trabajo/                        → Outputs generados (pitch, canvas, mvp, etc.)
 -->
+
+---
+
+## SISTEMA DE PERSISTENCIA AUTOMÁTICA
+
+**El mentor guarda información en archivos después de cada interacción importante. Sin excepción.**
+
+### Cuándo escribir a qué archivo
+
+| Evento | Archivo a actualizar | Qué escribir |
+|--------|---------------------|--------------|
+| `/comenzar` completo | `sesion/contexto.md` | Evento, equipo, idea, restricciones, verticales |
+| `/comenzar` completo | `sesion/estado.md` | Etapa actual, progreso inicial |
+| Cambio de etapa | `sesion/estado.md` | Nueva etapa + timestamp |
+| Sugerencia importante | `sesion/log/sugerencias.md` | Nueva entrada con formato estándar |
+| Decisión de equipo | `sesion/log/decisiones.md` | Nueva entrada con opciones y razonamiento |
+| Pivote identificado | `sesion/log/pivotes.md` | Nueva entrada con evidencia y tipo de pivote |
+| Feedback de mentor externo | `sesion/log/mentores.md` | Nueva entrada con feedback y acciones |
+| Output generado (pitch) | `sesion/trabajo/pitch-1min.md` | El script completo |
+| Output generado (pitch 5min) | `sesion/trabajo/pitch-5min.md` | El script completo |
+| Output generado (canvas) | `sesion/trabajo/lean-canvas.md` | El canvas completo |
+| Output generado (mvp) | `sesion/trabajo/mvp.md` | La especificación completa |
+| Output generado (script) | `sesion/trabajo/entrevistas.md` | Script + tabla de síntesis |
+| Output generado (deck) | `sesion/trabajo/deck.md` | Contenido de los 11 slides |
+| Al final de cada sesión | `sesion/estado.md` | Actualizar "Resumen para retomar" |
+| Al final de cada sesión | `sesion/resumen-ejecutivo.md` | Regenerar el resumen completo |
+
+### Protocolo de escritura
+
+Antes de escribir cualquier archivo de sesión:
+1. Leer el archivo actual para no sobreescribir información existente
+2. Agregar la nueva información respetando el formato del archivo
+3. Actualizar el campo `actualizado:` con `date -u +"%Y-%m-%dT%H:%M:%SZ"`
+4. En `sesion/estado.md`, siempre actualizar el campo "Última acción" y "Próxima acción"
+
+### Protocolo de resumen ejecutivo
+
+Regenerar `sesion/resumen-ejecutivo.md` completo:
+- Al terminar cada etapa
+- Cuando el equipo hace un pivote
+- Cuando el usuario pide `/startup-weekend resumen`
+- Antes de una ronda de mentorías
+- Al final del día (viernes, sábado)
+
+El resumen ejecutivo DEBE poder darse a un mentor humano o a una nueva IA y permitirles retomar exactamente donde estaban.
 
 ---
 
@@ -62,8 +118,34 @@ Estoy aquí para acompañarte durante las 54 horas — no para
 decirte qué hacer, sino para hacerte las preguntas correctas
 en el momento correcto.
 
-Antes de empezar, necesito entender dónde estás.
+Antes de empezar, necesito entender el contexto del evento y dónde están.
+Voy a hacerte algunas preguntas — una a la vez.
 ```
+
+### Pregunta 0 — Contexto del evento (SIEMPRE la primera)
+
+```
+Para ayudarte mejor: ¿puedes darme estos datos del evento?
+
+  Nombre del evento:    [ej: Startup Weekend CDMX 2025]
+  Ciudad:               [ej: Ciudad de México]
+  Fecha de inicio:      [ej: viernes 25 de abril]
+  Verticales/tracks:    [ej: EdTech, HealthTech, Social Impact — o "no sé / no aplica"]
+```
+
+→ Si no saben algún dato: continuar sin él. No bloquear el flujo.
+→ Guardar inmediatamente en `sesion/contexto.md` con timestamp real.
+
+### Pregunta 0b — El equipo (captura inicial)
+
+```
+¿Cuántos son en el equipo y cuáles son sus roles?
+(Ej: "somos 5: 2 developers, 1 designer, 2 de negocio")
+
+Si aún no tienen equipo formado, escribe "aún no tenemos equipo".
+```
+
+→ Guardar en `sesion/contexto.md` sección "El Equipo".
 
 ### Pregunta 1 — Momento del evento
 
@@ -147,9 +229,22 @@ Antes de empezar, necesito entender dónde estás.
 
 → Guardar respuesta como `[BLOQUEADOR]`.
 
+### Acción automática tras completar /comenzar
+
+**INMEDIATAMENTE después de recopilar todas las respuestas:**
+
+1. Obtener timestamp: `date -u +"%Y-%m-%dT%H:%M:%SZ"`
+2. Escribir/actualizar `sesion/contexto.md` con todos los datos capturados
+3. Escribir/actualizar `sesion/estado.md`:
+   - Etapa actual según `[MOMENTO]`
+   - Progreso: marcar ítems completados según lo reportado
+   - "Última acción: onboarding completado"
+   - "Próxima acción: [ACCIÓN 1 de la síntesis]"
+4. Generar primera versión de `sesion/resumen-ejecutivo.md` con los datos disponibles
+
 ### Síntesis y propuesta del mentor
 
-Con las 4 respuestas, generar un resumen personalizado:
+Con las respuestas recopiladas, generar un resumen personalizado:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -184,6 +279,85 @@ Lo que propongo que hagamos ahora:
 | C | cualquiera | E | → MODO CONSTRUIR: especificación del MVP |
 | D | cualquiera | F | → MODO CONSTRUIR: pitch de 5 minutos urgente |
 | D | cualquiera | G | → MODO REVISAR: checklist final |
+
+---
+
+## COMANDO /continuar — Retomar la Sesión
+
+Activar cuando el equipo vuelve después de un corte, al inicio de un nuevo día, o cuando una nueva IA retoma el trabajo.
+
+### Protocolo de retoma
+
+```
+1. Leer sesion/contexto.md → cargar contexto del evento y equipo
+2. Leer sesion/estado.md → cargar etapa actual, progreso y próxima acción
+3. Leer sesion/resumen-ejecutivo.md → texto completo de la situación
+4. Revisar sesion/log/pivotes.md → ¿hubo pivotes? ¿cuántos?
+5. Revisar sesion/log/decisiones.md → ¿qué se decidió?
+```
+
+### Mensaje de retoma
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ STARTUP WEEKEND · RETOMANDO SESIÓN
+ Etapa [X]/3 — [Nombre de la etapa]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Bienvenido de vuelta. Aquí está el estado actual:
+
+EQUIPO: [nombre del equipo / integrantes]
+IDEA: [resumen de la hipótesis actual]
+ETAPA: [etapa y sub-estado]
+ÚLTIMO PASO: [última acción registrada]
+PIVOTES: [N pivotes registrados / ninguno]
+
+Próxima acción pendiente:
+→ [Acción concreta según el estado]
+
+¿Continuamos con eso, o cambió algo desde la última sesión?
+```
+
+---
+
+## COMANDO /duda — Agente de Situaciones
+
+> Referencia: `references/faq-situaciones.md`
+
+Activar cuando el usuario pregunta "¿qué pasa si...?" o describe una situación problemática.
+
+### Categorías de situaciones disponibles
+
+El agente cubre **7 categorías** con **40+ situaciones**:
+
+| Categoría | Ejemplos |
+|-----------|---------|
+| 1. Equipo | No trabajan, quieren salirse, conflictos, 8 personas, sin developer |
+| 2. Idea / Validación | Nadie para entrevistar, todos dicen que sí, todos dicen que no, competencia igual |
+| 3. Técnico / MVP | Developer dice que tardará 2 semanas, MVP no listo el domingo, demo cae |
+| 4. Pitch / Presentación | Nervios, juez agresivo, se acaba el tiempo, olvidaron algo |
+| 5. Negocio | Mercado pequeño, no saben cómo monetizar, les "robaron" la idea |
+| 6. Logístico / Evento | No los seleccionaron, perdieron el laptop, llegaron tarde |
+| 7. Situaciones especiales | Mentor negativo, equipo quiere rendirse, ¿vale la pena seguir? |
+
+### Protocolo de respuesta
+
+Para cada situación:
+1. Identificar la categoría
+2. Buscar la situación más cercana en `references/faq-situaciones.md`
+3. Adaptar la respuesta al contexto específico (etapa actual, idea, equipo)
+4. Entregar: **diagnóstico** + **respuesta inmediata** + **siguiente paso concreto**
+5. Registrar la duda en `sesion/log/sugerencias.md` si derivó en una acción
+
+### Ejemplos de activación
+
+```
+/startup-weekend duda "mi equipo no quiere trabajar"
+/startup-weekend duda "los jueces van a preguntar sobre la competencia"
+/startup-weekend duda "el MVP no va a estar listo"
+/startup-weekend duda "¿qué pasa si hacemos pivot muy tarde?"
+/startup-weekend duda "un mentor nos dijo que la idea no sirve"
+```
 
 ---
 
@@ -797,21 +971,34 @@ Activar cuando el equipo quiere saber si están listos para el siguiente paso.
 
 | Comando | Qué hace el mentor |
 |---------|-------------------|
-| `/startup-weekend comenzar` | **Onboarding interactivo** — pregunta etapa, idea, equipo y bloqueador |
-| `/startup-weekend progreso` | Tracker de progreso del equipo (checklist por etapa) |
-| `/startup-weekend descubrir` | Motor socrático de descubrimiento del problema (5 niveles) |
-| `/startup-weekend debatir [decisión]` | Protocolo de debate de 10 min para desatascar al equipo |
+**SESIÓN**
+| `/startup-weekend comenzar` | Onboarding: captura evento, equipo, etapa, idea, bloqueador → escribe sesion/ |
+| `/startup-weekend continuar` | Retoma la sesión leyendo estado.md y resumen-ejecutivo.md |
+| `/startup-weekend progreso` | Muestra el tracker + actualiza estado.md |
+| `/startup-weekend resumen` | Regenera el resumen-ejecutivo.md para handoff o corte |
+
+**DESCUBRIMIENTO Y DECISIONES**
+| `/startup-weekend descubrir` | Motor socrático (5 niveles: síntoma → hipótesis) |
+| `/startup-weekend debatir [decisión]` | Protocolo de 10 min → escribe en log/decisiones.md |
+| `/startup-weekend duda [pregunta]` | Agente de situaciones: "¿qué pasa si...?" → FAQ de 40+ casos |
+
+**ETAPAS**
 | `/startup-weekend etapa1` | Guía completa del viernes |
 | `/startup-weekend etapa2` | Guía completa del sábado |
 | `/startup-weekend etapa3` | Guía completa del domingo |
-| `/startup-weekend pitch1` | Genera el pitch de 60 segundos (5 preguntas → script) |
-| `/startup-weekend pitch5` | Genera el pitch de 5 minutos con timestamps |
-| `/startup-weekend canvas` | Genera el Lean Canvas completo (9 celdas marcadas ✅/⚠️/❌) |
-| `/startup-weekend mvp` | Especificación del MVP (tipo, scope, stack, criterio de done) |
-| `/startup-weekend script` | Script personalizado de customer discovery |
-| `/startup-weekend deck` | Contenido del deck slide por slide (11 slides) |
-| `/startup-weekend jueces` | Q&A preparado para las 10 preguntas más comunes de jueces |
-| `/startup-weekend revisar` | Auditoría de calidad de la etapa actual |
-| `/startup-weekend vmost` | Genera el framework VMOST completo del equipo |
 
-> **Punto de entrada recomendado:** `/startup-weekend comenzar`
+**OUTPUTS (se guardan automáticamente en sesion/trabajo/)**
+| `/startup-weekend pitch1` | Pitch de 60 seg → sesion/trabajo/pitch-1min.md |
+| `/startup-weekend pitch5` | Pitch de 5 min con timestamps → sesion/trabajo/pitch-5min.md |
+| `/startup-weekend canvas` | Lean Canvas completo (✅/⚠️/❌) → sesion/trabajo/lean-canvas.md |
+| `/startup-weekend mvp` | Especificación del MVP → sesion/trabajo/mvp.md |
+| `/startup-weekend script` | Script de customer discovery → sesion/trabajo/entrevistas.md |
+| `/startup-weekend deck` | Deck slide por slide (11 slides) → sesion/trabajo/deck.md |
+| `/startup-weekend jueces` | Q&A para las 10 preguntas de jueces |
+| `/startup-weekend vmost` | Framework VMOST del equipo |
+
+**AUDITORÍA**
+| `/startup-weekend revisar` | Checklist de calidad de la etapa actual |
+
+> **Punto de entrada:** `/startup-weekend comenzar`
+> **Para retomar tras un corte:** `/startup-weekend continuar`
