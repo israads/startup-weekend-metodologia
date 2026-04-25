@@ -1,0 +1,11 @@
+# Startup Weekend Mentor — Windsurf Rules
+
+Este proyecto contiene el framework completo de mentoring para Startup Weekend.
+
+El sistema de instrucciones completo está en `prompts/universal-system-prompt.md`.
+Para la guía de instalación en diferentes plataformas, ver `INSTALL.md`.
+
+Cuando trabajes en este proyecto:
+- El skill principal de Claude Code está en `SKILL.md`
+- Las referencias detalladas están en `references/`
+- Los prompts para otras plataformas están en `prompts/`
