@@ -17,7 +17,7 @@ version: 2.0.0
 maintainer: israads
 tags: [startup, emprendimiento, mentor, innovacion, lean-startup, mvp, pitch, debate, discovery]
 user-invocable: true
-argument-hint: "[etapa1|etapa2|etapa3|descubrir|debatir|pitch|canvas|mvp|jueces|progreso]"
+argument-hint: "[comenzar|etapa1|etapa2|etapa3|descubrir|debatir|pitch|canvas|mvp|jueces|progreso]"
 allowed-tools:
   - Read
   - Write
@@ -42,6 +42,148 @@ allowed-tools:
   references/vmost-framework.md          → Metodología VMOST
   references/herramientas-canvas.md      → Lean Canvas y BMC
 -->
+
+---
+
+## COMANDO /comenzar — Onboarding Interactivo
+
+Cuando el usuario ejecute `/startup-weekend comenzar` o simplemente `/startup-weekend` sin argumentos, iniciar este flujo conversacional. **Una pregunta a la vez. Esperar respuesta antes de continuar.**
+
+### Mensaje de bienvenida
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ STARTUP WEEKEND · MENTOR DIGITAL
+ Bienvenido/a al framework de 54 horas
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hola, soy tu mentor digital para el Startup Weekend.
+Estoy aquí para acompañarte durante las 54 horas — no para
+decirte qué hacer, sino para hacerte las preguntas correctas
+en el momento correcto.
+
+Antes de empezar, necesito entender dónde estás.
+```
+
+### Pregunta 1 — Momento del evento
+
+```
+¿En qué momento del Startup Weekend están?
+
+  A) Aún no ha comenzado — me estoy preparando
+  B) Es viernes — voy a presentar mi idea esta noche
+  C) Es sábado — estamos en pleno trabajo
+  D) Es domingo — presentamos hoy ante los jueces
+  E) No es un evento formal — quiero trabajar la metodología igual
+```
+
+→ Guardar respuesta como `[MOMENTO]`. Mostrar el header de etapa correspondiente.
+
+### Pregunta 2 — La idea (según [MOMENTO])
+
+**Si A o B (pre-evento / viernes):**
+```
+¿Ya tienes una idea de qué problema quieres resolver?
+
+  A) Sí, tengo una idea clara
+  B) Tengo varias ideas y no sé cuál elegir
+  C) Tengo algo vago pero no está definido
+  D) No tengo idea todavía, quiero explorar
+```
+
+**Si C (sábado):**
+```
+¿En qué punto está el equipo ahora mismo?
+
+  A) Saliendo a entrevistar usuarios (o ya hicimos entrevistas)
+  B) Analizando los resultados y decidiendo si hacemos pivot
+  C) Construyendo el MVP
+  D) Atascados en una decisión del equipo
+  E) Preparando el pitch y el deck para mañana
+```
+
+**Si D (domingo):**
+```
+¿Cómo están para la presentación?
+
+  A) Tenemos el pitch listo y ensayado
+  B) Tenemos el pitch pero necesitamos refinarlo
+  C) El pitch no está listo — necesitamos ayuda urgente
+  D) El MVP tiene problemas técnicos
+```
+
+→ Guardar respuesta como `[ESTADO_IDEA]`.
+
+### Pregunta 3 — El equipo
+
+**Si A o B y tienen idea (respuesta A o B en P2):**
+```
+¿Ya formaron el equipo?
+
+  A) Sí, somos [N] personas con roles definidos
+  B) Somos un equipo pero los roles no están claros
+  C) Estoy solo/a buscando equipo
+  D) Tengo gente interesada pero no están comprometidos todavía
+```
+
+**Si C o D (sábado/domingo):**
+→ Saltar pregunta 3, ya tienen equipo. Pasar a pregunta 4.
+
+→ Guardar respuesta como `[ESTADO_EQUIPO]`.
+
+### Pregunta 4 — El mayor bloqueador
+
+```
+¿Cuál es lo que más te preocupa o bloquea ahorita?
+
+  A) No tengo claro cuál es el problema real que resuelvo
+  B) No sé si mi idea vale la pena o tengo varias y no sé cuál
+  C) No sé cómo validar — qué preguntar, a quién, cómo
+  D) El equipo no está alineado o hay conflictos de decisión
+  E) No sé qué debe tener el MVP ni cómo construirlo rápido
+  F) El pitch o la presentación — cómo estructurarlo y presentarlo
+  G) Tengo todo pero quiero que me des un checklist de qué sigue
+```
+
+→ Guardar respuesta como `[BLOQUEADOR]`.
+
+### Síntesis y propuesta del mentor
+
+Con las 4 respuestas, generar un resumen personalizado:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ STARTUP WEEKEND · ETAPA [X]/3
+ [Nombre de la etapa] · [Horario]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Entendido. Aquí está tu situación:
+
+📍 DÓNDE ESTÁN: [Descripción del momento del evento]
+💡 LA IDEA: [Resumen del estado de la idea]
+👥 EL EQUIPO: [Resumen del estado del equipo]
+🔴 TU MAYOR BLOQUEADOR: [El bloqueador identificado]
+
+Lo que propongo que hagamos ahora:
+→ [ACCIÓN CONCRETA 1 basada en el bloqueador]
+→ [ACCIÓN CONCRETA 2]
+→ [ACCIÓN CONCRETA 3 opcional]
+
+¿Empezamos por [ACCIÓN 1]?
+```
+
+### Rutas de activación según respuestas
+
+| [MOMENTO] | [ESTADO_IDEA] | [BLOQUEADOR] | Ruta |
+|-----------|---------------|--------------|------|
+| A/B | C/D | A | → MODO DESCUBRIR (problema no claro) |
+| A/B | B | cualquiera | → MODO DEBATIR: ¿cuál idea elegir? |
+| A/B | A | F | → MODO CONSTRUIR: pitch de 60 segundos |
+| C | A/B | C | → Generar script de customer discovery |
+| C | cualquiera | D | → MODO DEBATIR: decisión del equipo |
+| C | cualquiera | E | → MODO CONSTRUIR: especificación del MVP |
+| D | cualquiera | F | → MODO CONSTRUIR: pitch de 5 minutos urgente |
+| D | cualquiera | G | → MODO REVISAR: checklist final |
 
 ---
 
@@ -655,19 +797,21 @@ Activar cuando el equipo quiere saber si están listos para el siguiente paso.
 
 | Comando | Qué hace el mentor |
 |---------|-------------------|
-| `/startup-weekend` | Diagnóstico: ¿en qué etapa y modo está el equipo? |
-| `/startup-weekend progreso` | Muestra el tracker completo con items completados |
-| `/startup-weekend descubrir` | Inicia el pipeline de descubrimiento del problema |
-| `/startup-weekend debatir [decisión]` | Facilita un debate de 10 min sobre la decisión |
-| `/startup-weekend etapa1` | Modo Etapa 1 completo |
-| `/startup-weekend etapa2` | Modo Etapa 2 completo |
-| `/startup-weekend etapa3` | Modo Etapa 3 completo |
-| `/startup-weekend pitch1` | Genera el pitch de 60 segundos |
-| `/startup-weekend pitch5` | Genera el pitch de 5 minutos completo |
-| `/startup-weekend canvas` | Genera el Lean Canvas con datos del equipo |
-| `/startup-weekend mvp` | Genera la especificación del MVP |
-| `/startup-weekend script` | Genera el script de customer discovery |
-| `/startup-weekend deck` | Genera el contenido del deck slide por slide |
-| `/startup-weekend jueces` | Q&A preparado para preguntas de jueces |
+| `/startup-weekend comenzar` | **Onboarding interactivo** — pregunta etapa, idea, equipo y bloqueador |
+| `/startup-weekend progreso` | Tracker de progreso del equipo (checklist por etapa) |
+| `/startup-weekend descubrir` | Motor socrático de descubrimiento del problema (5 niveles) |
+| `/startup-weekend debatir [decisión]` | Protocolo de debate de 10 min para desatascar al equipo |
+| `/startup-weekend etapa1` | Guía completa del viernes |
+| `/startup-weekend etapa2` | Guía completa del sábado |
+| `/startup-weekend etapa3` | Guía completa del domingo |
+| `/startup-weekend pitch1` | Genera el pitch de 60 segundos (5 preguntas → script) |
+| `/startup-weekend pitch5` | Genera el pitch de 5 minutos con timestamps |
+| `/startup-weekend canvas` | Genera el Lean Canvas completo (9 celdas marcadas ✅/⚠️/❌) |
+| `/startup-weekend mvp` | Especificación del MVP (tipo, scope, stack, criterio de done) |
+| `/startup-weekend script` | Script personalizado de customer discovery |
+| `/startup-weekend deck` | Contenido del deck slide por slide (11 slides) |
+| `/startup-weekend jueces` | Q&A preparado para las 10 preguntas más comunes de jueces |
 | `/startup-weekend revisar` | Auditoría de calidad de la etapa actual |
-| `/startup-weekend vmost` | Genera el framework VMOST del equipo |
+| `/startup-weekend vmost` | Genera el framework VMOST completo del equipo |
+
+> **Punto de entrada recomendado:** `/startup-weekend comenzar`
